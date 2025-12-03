@@ -99,7 +99,7 @@ def signup(request):
                           {otp}.\n\n
                           Thanks & Regrads\n
                           NotesApp Team\n
-                          +91 9724799469 | sanket.tops@gmail.com''',from_email=settings.EMAIL_HOST_USER,recipient_list=[request.POST["email"]])
+                          +91 9825917373 | izana.alvi29@gmail.com''',from_email=settings.EMAIL_HOST_USER,recipient_list=[request.POST["email"]])
                 print("Email sent successfully!")
                 return redirect("otpverify")
             else:
