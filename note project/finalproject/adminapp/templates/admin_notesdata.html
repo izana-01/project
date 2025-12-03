@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Notes — Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --accent: #e11d48;
+            --accent-dark: #9f1239;
+            --bg-dark: #060606;
+            --panel-bg: rgba(30, 30, 30, 0.9);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: white;
+        }
+
+        header {
+            background-color: var(--panel-bg);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-neon {
+            background-color: var(--accent);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+        }
+
+        .btn-danger-neon {
+            background-color: var(--accent-dark);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-danger-neon:hover {
+            box-shadow: 0 0 10px var(--accent-dark), 0 0 20px var(--accent-dark);
+        }
+
+        .table-container {
+            background-color: var(--panel-bg);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+        }
+
+        thead th {
+            background-color: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+
+        tbody tr {
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(225, 29, 72, 0.1);
+            box-shadow: inset 0 0 8px var(--accent);
+        }
+
+        .search-input {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .badge {
+            px: 2.5rem;
+        }
+
+        .pagination button {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-30 p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">Submitted Notes</h1>
+        <a href="/adminapp/admin_dashboard"
+            class="btn-neon px-4 py-2 rounded-lg text-sm font-semibold">⬅ Back to Dashboard</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- Search & Title -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+            <h2 class="text-lg font-semibold">Notes Management</h2>
+            <div class="flex items-center gap-2">
+                <input type="text" placeholder="Search notes..." class="search-input rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]">
+                <button class="btn-neon px-4 py-2 rounded-lg font-semibold">Search</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container overflow-x-auto shadow-md">
+            <table class="min-w-full text-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Submitted_at</th>
+                        <th>User</th>
+                        <th>Title</th>
+                        <th>Descriptions</th>
+                        <th>Note's File</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Updated_at</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/10">
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.submitted_at}}</td>
+                        <td>{{i.email.fullname}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.desc}}</td>
+                        <td class="text-center"><a href="{{i.files.url}}" target="_blank"
+                                class="text-[color:var(--accent)] hover:underline">{{i.files|truncatechars:15}}</a></td>
+                        <td class="text-center">{{i.cate}}</td>
+                        <td class="text-center">
+                            {% if i.status == 'Approved' %}
+                            <span
+                                class="px-2 py-1 text-xs font-semibold rounded-full bg-green-800 text-green-100">{{ i.status }}</span>
+                            {% elif i.status == 'Rejected' %}
+                            <span
+                                class="px-2 py-1 text-xs font-semibold rounded-full bg-red-800 text-red-100">{{ i.status }}</span>
+                            {% else %}
+                            <span
+                                class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-800 text-yellow-100">{{ i.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">{{i.updated_at}}</td>
+                        <td class="text-center space-x-2">
+                            <a href="/adminapp/notes_approve/{{i.id}}" class="btn-neon px-3 py-1 text-xs rounded">Approve</a>
+                            <a href="/adminapp/notes_reject/{{i.id}}" class="btn-danger-neon px-3 py-1 text-xs rounded">Reject</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6 pagination">
+            <div class="text-sm text-white/70">
+                Showing 1 to 10 of 50 entries
+            </div>
+            <div class="flex space-x-2">
+                <button>Previous</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>Next</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Admin Panel. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
