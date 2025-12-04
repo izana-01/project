@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Neat Note</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --card-bg: #060606;
+            --panel-bg: rgba(20, 20, 20, 0.9);
+            --accent: #e11d48;
+            --accent-dark: #9f1239;
+        }
+
+        body {
+            font-family: 'Roboto Slab', serif;
+            background:
+                radial-gradient(1200px 600px at 10% 10%, rgba(255, 0, 0, 0.04), transparent 5%),
+                radial-gradient(900px 500px at 90% 90%, rgba(0, 0, 0, 0.6), transparent 10%),
+                #050505;
+            color: #ddd;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(8px);
+        }
+
+        .vignette::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.6);
+            border-radius: 28px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="bg-black border-b border-red-900/40 backdrop-blur-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <a href="/" class="flex items-center space-x-3">
+                <img src="/static/images/red-sign-with-chinese-symbol-middle.png" class="w-8 h-8">
+                <span class="text-white font-bold tracking-wide">NEAT <span class="text-[color:var(--accent)]">NOTE</span></span>
+            </a>
+
+            <div class="space-x-6 text-gray-300 text-sm">
+                <a href="/" class="hover:text-[color:var(--accent)]">Home</a>
+                <a href="/notes" class="hover:text-[color:var(--accent)]">Notes</a>
+                <a href="/about" class="hover:text-[color:var(--accent)]">About</a>
+                <a href="/contact" class="text-[color:var(--accent)] font-semibold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+
+        <!-- HERO / CONTACT FORM SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+
+            <!-- Contact Form -->
+            <div class="glass p-8 rounded-2xl shadow-xl border border-red-900/40">
+                <h2 class="text-2xl font-bold text-white mb-6">Get in Touch</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label class="block text-gray-400 font-semibold mb-2">Full Name</label>
+                        <input type="text" name="fullname" placeholder="Enter your name"
+                            class="w-full px-4 py-2 rounded-lg bg-black/20 border border-red-900/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-[color:var(--accent)] focus:border-[color:var(--accent)] transition">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-400 font-semibold mb-2">Email</label>
+                        <input type="email" name="email" placeholder="Enter your email"
+                            class="w-full px-4 py-2 rounded-lg bg-black/20 border border-red-900/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-[color:var(--accent)] focus:border-[color:var(--accent)] transition">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-400 font-semibold mb-2">Message</label>
+                        <textarea rows="5" name="msg" placeholder="Write your message..."
+                            class="w-full px-4 py-2 rounded-lg bg-black/20 border border-red-900/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-[color:var(--accent)] focus:border-[color:var(--accent)] transition"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full mt-2 py-2 rounded-lg bg-gradient-to-r from-[color:var(--accent-dark)] to-[color:var(--accent)] text-white font-semibold shadow-lg hover:brightness-110 transition">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="glass p-8 rounded-2xl shadow-xl border border-red-900/40 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold text-white mb-4">Contact Information</h2>
+                <p class="text-gray-400 mb-2"><strong>Address:</strong> you don't have to know that , mind your business.</p>
+                <p class="text-gray-400 mb-2"><strong>Phone:</strong> +91 9825917373</p>
+                <p class="text-gray-400 mb-2"><strong>Email:</strong> shutup@notesapp.com</p>
+                <p class="text-gray-400 mt-4">We’d love to hear from you! Whether you have a question about features,
+                    pricing, or anything else — our team is ready to help.</p>
+            </div>
+        </section>
+
+        <!-- GOOGLE MAP -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold text-white mb-4 text-center">Our Location</h2>
+            <div class="rounded-2xl overflow-hidden shadow-xl border border-red-900/40">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.679931494302!2d70.77238027410435!3d22.290111043267054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959ca248c77c099%3A0xdf5ac10af64ac8ee!2sTOPS%20Technologies!5e0!3m2!1sen!2sin!4v1760528361401!5m2!1sen!2sin"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <!-- CTA / WhatsApp Button Info -->
+        <section class="mt-12 text-center">
+            <p class="text-gray-400">Or chat with us directly via WhatsApp</p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 border-t border-red-900/40 py-8 text-center text-gray-400">
+        <p>© <span id="year"></span> NotesApp. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // WhatsApp Chat Button
+        var url = 'https://wati-integration-prod-service.clare.ai/v2/watiWidget.js?79624';
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url;
+        var options = {
+            "enabled": true,
+            "chatButtonSetting": {
+                "backgroundColor": "#00e785",
+                "ctaText": "Chat with us",
+                "borderRadius": "25",
+                "marginLeft": "0",
+                "marginRight": "20",
+                "marginBottom": "20",
+                "ctaIconWATI": false,
+                "position": "right"
+            },
+            "brandSetting": {
+                "brandName": "NotesApp",
+                "brandSubTitle": "undefined",
+                "brandImg": "https://www.wati.io/wp-content/uploads/2023/04/Wati-logo.svg",
+                "welcomeText": "Hi there!\nHow can I help you?",
+                "messageText": "Hello, %0A I have a question about {{page_link}}",
+                "backgroundColor": "#00e785",
+                "ctaText": "Chat with us",
+                "borderRadius": "25",
+                "autoShow": false,
+                "phoneNumber": "919724799469"
+            }
+        };
+        s.onload = function () {
+            CreateWhatsappChatWidget(options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    </script>
+
+</body>
+
+</html>

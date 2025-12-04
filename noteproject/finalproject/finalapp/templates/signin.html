@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Neat Note</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --card-bg: #060606;
+      --panel-bg: rgba(20, 20, 20, 0.9);
+      --accent: #e11d48; /* red-600 */
+      --accent-dark: #9f1239; /* red-700 */
+    }
+
+    body {
+      font-family: 'Roboto Slab', serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,0,0,0.04), transparent 5%),
+                  radial-gradient(900px 500px at 90% 90%, rgba(0,0,0,0.6), transparent 10%),
+                  #050505;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* subtle vignette */
+    .vignette::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 200px rgba(0,0,0,0.6);
+      border-radius: 28px;
+    }
+
+    /* small flicker animation for the logo */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; transform: translateY(0); }
+      50% { opacity: .85; transform: translateY(-1px); }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4 py-12">
+  <div class="relative w-full max-w-md">
+
+    <!-- Card -->
+    <div class="vignette relative bg-[color:var(--card-bg)] rounded-2xl shadow-2xl ring-1 ring-black/40 overflow-hidden">
+      <!-- Top red stripe -->
+      <div class="h-2 bg-gradient-to-r from-[color:var(--accent-dark)] to-[color:var(--accent)]"></div>
+
+      <div class="p-8 md:p-10">
+        <!-- Logo / Title -->
+        <div class="flex items-center justify-center mb-6">
+          <div class="text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-white tracking-wide mb-1" style="letter-spacing:1px">NEAT <span class="text-[color:var(--accent)]">NOTE</span></h1>
+            <p class="text-xs text-gray-400">— Write a name, change a fate —</p>
+          </div>
+        </div>
+
+        <!-- Form panel -->
+        <div class="bg-[color:var(--panel-bg)] border border-gray-800 rounded-xl p-6">
+          <form action="#" method="POST" class="space-y-5">
+            {% csrf_token %}
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Username / Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com"
+                class="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)] focus:border-[color:var(--accent)] transition" required />
+            </div>
+
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+              <input type="password" id="password" name="password" placeholder="********"
+                class="w-full px-4 py-3 rounded-lg bg-transparent border border-gray-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)] focus:border-[color:var(--accent)] transition" required />
+            </div>
+
+            <div class="flex items-center justify-between text-sm text-gray-300">
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" class="rounded text-[color:var(--accent)] focus:ring-0 border-gray-700" />
+                <span class="text-gray-300">Remember me</span>
+              </label>
+              <a href="#" class="text-[color:var(--accent)] hover:underline">Forgot password?</a>
+            </div>
+
+            <button type="submit"
+              class="w-full py-3 rounded-lg bg-gradient-to-r from-[color:var(--accent-dark)] to-[color:var(--accent)] text-white font-semibold shadow-lg hover:brightness-105 active:scale-[0.995] transition">
+              Login
+            </button>
+          </form>
+
+          <!-- OR divider -->
+          <div class="flex items-center my-6 text-gray-500">
+            <hr class="flex-grow border-gray-700/60" />
+            <span class="px-3 text-xs">OR</span>
+            <hr class="flex-grow border-gray-700/60" />
+          </div>
+
+          <p class="text-center text-sm text-gray-300">Don’t have an account? <a href="/signup" class="font-medium text-[color:var(--accent)] hover:underline">Sign up</a></p>
+        </div>
+
+        <!-- subtle footer -->
+        <div class="mt-6 text-xs text-gray-600 text-center">
+          <p>By logging in you agree to the <span class="text-gray-400">Terms</span> and <span class="text-gray-400">Privacy</span>.</p>
+        </div>
+
+      </div>
+
+      <!-- Decorative corner mark -->
+      <div class="absolute -right-6 -top-6 rotate-12 opacity-5">
+        <svg width="160" height="160" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" fill="black" />
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Neat Note</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --card-bg: #060606;
+      --panel-bg: rgba(20, 20, 20, 0.9);
+      --accent: #e11d48;
+      --accent-dark: #9f1239;
+    }
+
+    body {
+      font-family: 'Roboto Slab', serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255, 0, 0, 0.04), transparent 5%),
+        radial-gradient(900px 500px at 90% 90%, rgba(0, 0, 0, 0.6), transparent 10%),
+        #050505;
+      color: #ddd;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+    }
+
+    .vignette::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.6);
+      border-radius: 28px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="bg-black border-b border-red-900/40 backdrop-blur-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <a href="/" class="flex items-center space-x-3">
+        <img src="/static/images/red-sign-with-chinese-symbol-middle.png" class="w-8 h-8">
+        <span class="text-white font-bold tracking-wide">NEAT <span class="text-[color:var(--accent)]">NOTE</span></span>
+      </a>
+
+      <div class="space-x-6 text-gray-300 text-sm">
+        <a href="/" class="hover:text-[color:var(--accent)]">Home</a>
+        <a href="/notes" class="hover:text-[color:var(--accent)]">Notes</a>
+        <a href="/about" class="text-[color:var(--accent)] font-semibold">About</a>
+        <a href="/contact" class="hover:text-[color:var(--accent)]">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+
+    <!-- HERO SECTION -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide text-white">
+          We build products people love
+        </h2>
+        <p class="mt-4 text-gray-400">
+          At <span class="text-[color:var(--accent)] font-semibold">Your Company</span> we create digital experiences that are usable, delightful, and fast.
+        </p>
+
+        <ul class="mt-8 space-y-4">
+          <li class="flex gap-4">
+            <span class="h-10 w-10 flex items-center justify-center rounded-lg bg-red-900/40 text-[color:var(--accent)] text-lg">✓</span>
+            <div>
+              <p class="font-semibold text-white">Human-centered design</p>
+              <p class="text-gray-400 text-sm">We start with users and iterate fast.</p>
+            </div>
+          </li>
+
+          <li class="flex gap-4">
+            <span class="h-10 w-10 flex items-center justify-center rounded-lg bg-red-900/40 text-[color:var(--accent)] text-lg">⚡</span>
+            <div>
+              <p class="font-semibold text-white">Performance-first</p>
+              <p class="text-gray-400 text-sm">Fast, reliable & accessible products.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-8 flex gap-4">
+          <a href="/contact" class="px-5 py-3 rounded-lg bg-gradient-to-r from-[color:var(--accent-dark)] to-[color:var(--accent)] text-white font-semibold shadow-lg hover:brightness-110">
+            Get in touch
+          </a>
+          <a href="/services" class="px-5 py-3 rounded-lg border border-red-800 text-gray-300 hover:bg-red-900/20">
+            Our services
+          </a>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-2xl shadow-xl border border-red-900/40">
+        <h3 class="text-xl font-semibold text-white">Our mission</h3>
+        <p class="mt-3 text-gray-400">
+          To empower teams to ship meaningful software — with clarity and joy.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mt-6">
+          <div class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+            <p class="text-xs text-gray-500">Founded</p>
+            <p class="font-semibold text-white">2019</p>
+          </div>
+          <div class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+            <p class="text-xs text-gray-500">Clients</p>
+            <p class="font-semibold text-white">250+</p>
+          </div>
+          <div class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+            <p class="text-xs text-gray-500">Offices</p>
+            <p class="font-semibold text-white">Rajkot, India</p>
+          </div>
+          <div class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+            <p class="text-xs text-gray-500">Team</p>
+            <p class="font-semibold text-white">40+</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section class="mt-16">
+      <h3 class="text-2xl font-semibold text-white">Our story</h3>
+      <p class="mt-3 text-gray-400 max-w-3xl">
+        What started as a small workshop grew into a product-first studio helping local businesses scale.
+      </p>
+
+      <div class="mt-8 space-y-5">
+        <div class="flex items-start gap-4">
+          <span class="h-10 w-10 rounded-full bg-gradient-to-br from-red-900 to-red-700 text-white flex items-center justify-center">1</span>
+          <div>
+            <p class="font-semibold text-white">2019 — Founded</p>
+            <p class="text-gray-400 text-sm">Small team building websites & simple apps.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="h-10 w-10 rounded-full bg-gradient-to-br from-red-900 to-red-700 text-white flex items-center justify-center">2</span>
+          <div>
+            <p class="font-semibold text-white">2021 — First SaaS launch</p>
+            <p class="text-gray-400 text-sm">Launched our first paid SaaS product.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="h-10 w-10 rounded-full bg-gradient-to-br from-red-900 to-red-700 text-white flex items-center justify-center">3</span>
+          <div>
+            <p class="font-semibold text-white">2024 — Growth</p>
+            <p class="text-gray-400 text-sm">Expanded into training & education programs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="mt-16">
+      <div class="flex justify-between items-center">
+        <h3 class="text-2xl font-semibold text-white">Meet the team</h3>
+        <a href="/careers" class="text-[color:var(--accent)] text-sm">We're hiring →</a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+        <!-- Team Member Card -->
+        <article class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-full bg-gradient-to-br from-[color:var(--accent-dark)] to-[color:var(--accent)] text-white flex items-center justify-center font-semibold">
+              SC
+            </div>
+            <div>
+              <h4 class="font-semibold text-white">Aniruddh</h4>
+              <p class="text-gray-400 text-sm">Founder & traveller</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mt-3">
+            Passionate about learning experiences.
+          </p>
+        </article>
+
+        <article class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-full bg-red-900/30 text-[color:var(--accent)] flex items-center justify-center font-semibold">AR</div>
+            <div>
+              <h4 class="font-semibold text-white">yashita</h4>
+              <p class="text-gray-400 text-sm">legal lawyer , designer </p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mt-3">
+            Designs intuitive, handle legal things.
+          </p>
+        </article>
+
+        <article class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-full bg-red-900/30 text-[color:var(--accent)] flex items-center justify-center font-semibold">KM</div>
+            <div>
+              <h4 class="font-semibold text-white">abhijeet</h4>
+              <p class="text-gray-400 text-sm">Senior Engineer</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mt-3">
+            Builds scalable systems & mentors junior devs.
+          </p>
+        </article>
+
+        <article class="bg-black/40 border border-red-900/40 rounded-xl p-4">
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-full bg-red-900/30 text-[color:var(--accent)] flex items-center justify-center font-semibold">RP</div>
+            <div>
+              <h4 class="font-semibold text-white">izana</h4>
+              <p class="text-gray-400 text-sm">Customer Success</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm mt-3">
+            Helps customers with smooth onboarding.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ + CTA -->
+    <section class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- FAQ -->
+      <div>
+        <h3 class="text-xl font-semibold text-white">Frequently asked questions</h3>
+
+        <div class="mt-5 space-y-4">
+          <details class="bg-black/40 border border-red-900/40 p-4 rounded-xl">
+            <summary class="cursor-pointer font-semibold text-white">What services do you offer?</summary>
+            <p class="text-gray-400 text-sm mt-2">
+              We offer web development, mobile apps, SaaS, and training workshops.
+            </p>
+          </details>
+
+          <details class="bg-black/40 border border-red-900/40 p-4 rounded-xl">
+            <summary class="cursor-pointer font-semibold text-white">Where are you located?</summary>
+            <p class="text-gray-400 text-sm mt-2">
+              Our HQ is in Rajkot, India — we work worldwide.
+            </p>
+          </details>
+
+          <details class="bg-black/40 border border-red-900/40 p-4 rounded-xl">
+            <summary class="cursor-pointer font-semibold text-white">Do you offer training?</summary>
+            <p class="text-gray-400 text-sm mt-2">
+              Yes — web dev, Python, corporate workshops & more.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <aside class="bg-gradient-to-br from-[color:var(--accent-dark)] to-[color:var(--accent)] text-white rounded-2xl p-8 shadow-xl">
+        <h4 class="text-2xl font-semibold">Want to work with us?</h4>
+        <p class="text-sm opacity-90 mt-2">Tell us your project — we'll reply within 2 business days.</p>
+
+        <ul class="mt-4 space-y-2 text-sm">
+          <li>• Free consultation</li>
+          <li>• Dedicated support</li>
+          <li>• Flexible engagement</li>
+        </ul>
+
+        <a href="/contact"
+           class="block w-full mt-6 text-center py-3 rounded-lg bg-black/20 backdrop-blur-md hover:bg-black/30 font-semibold">
+          Start a conversation
+        </a>
+      </aside>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 border-t border-red-900/40 py-8">
+      <div class="max-w-7xl mx-auto flex justify-between items-center text-sm text-gray-400">
+        <p>© <span id="year"></span> Your Company. All rights reserved.</p>
+        <div class="flex gap-5">
+          <a href="/privacy" class="hover:text-[color:var(--accent)]">Privacy</a>
+          <a href="/terms" class="hover:text-[color:var(--accent)]">Terms</a>
+          <a href="/contact" class="hover:text-[color:var(--accent)]">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
